@@ -1,0 +1,35 @@
+From: Jean-Christophe Dubacq <jcdubacq1@free.fr>
+Date: Wed, 3 Apr 2013 23:41:37 +0200
+Subject: Use dynamic linking for executables
+
+---
+ libraries/liblmdb/Makefile |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/libraries/liblmdb/Makefile b/libraries/liblmdb/Makefile
+index a256b9e..c0771a2 100644
+--- a/libraries/liblmdb/Makefile
++++ b/libraries/liblmdb/Makefile
+@@ -33,14 +33,14 @@ liblmdb.a:	mdb.o midl.o
+ $(SONAME):	mdb.o midl.o
+ 	$(CC) $(LDFLAGS) -pthread -shared -Wl,-soname=$@ -o $@ mdb.o midl.o $(SOLIBS)
+ 
+-mdb_stat: mdb_stat.o liblmdb.a
+-mdb_copy: mdb_copy.o liblmdb.a
+-mtest:    mtest.o    liblmdb.a
+-mtest2:	mtest2.o liblmdb.a
+-mtest3:	mtest3.o liblmdb.a
+-mtest4:	mtest4.o liblmdb.a
+-mtest5:	mtest5.o liblmdb.a
+-mtest6:	mtest6.o liblmdb.a
++mdb_stat: mdb_stat.o $(SONAME)
++mdb_copy: mdb_copy.o $(SONAME)
++mtest:    mtest.o    $(SONAME)
++mtest2:	mtest2.o $(SONAME)
++mtest3:	mtest3.o $(SONAME)
++mtest4:	mtest4.o $(SONAME)
++mtest5:	mtest5.o $(SONAME)
++mtest6:	mtest6.o $(SONAME)
+ 
+ mdb.o: mdb.c lmdb.h midl.h
+ 	$(CC) $(CFLAGS) -fPIC $(CPPFLAGS) -c mdb.c

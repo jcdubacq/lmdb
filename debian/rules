@@ -1,0 +1,5 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+override_dh_auto_build:
+	make -C libraries/liblmdb mdb_stat mdb_copy liblmdb.so.0

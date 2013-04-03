@@ -1,0 +1,37 @@
+Source: lmdb
+Section: devel
+Priority: optional
+Maintainer: Jean-Christophe Dubacq <jcdubacq1@free.fr>
+Build-depends: debhelper (>= 9)
+Standards-Version: 3.9.4
+
+Package: lmdb-utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Utilities for managing LMDB databases
+ Lightning Memory-Mapped Database (lmdb) is a read-optimized database
+ library originally developed to be used in OpenLDAPs slapd.
+ .
+ This package contains utilities to manage LMDB databases.
+
+Package: liblmdb0
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Lightning Memory-Mapped Database shared library
+ Lightning Memory-Mapped Database (lmdb) is a read-optimized database
+ library originally developed to be used in OpenLDAPs slapd.
+ .
+ This package contains the shared library.
+
+Package: liblmdb0-dev
+Provides: liblmdb-dev
+Conflicts: liblmdb-dev
+Architecture: all
+Section: libdevel
+Depends: liblmdb0 (>= ${source:Version}), liblmdb0 (<< ${source:Version}.1~), ${misc:Depends}
+Description: Lightning Memory-Mapped Database development headers
+ Lightning Memory-Mapped Database (lmdb) is a read-optimized database
+ library originally developed to be used in OpenLDAPs slapd.
+ .
+ This package contains the files necessary for programming with liblmdb.
+

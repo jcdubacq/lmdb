@@ -1,0 +1,5 @@
+lmdb (0.9.6.20130402-1) UNRELEASED; urgency=low
+
+  * Initial release.
+
+ -- Jean-Christophe Dubacq <jcdubacq1@free.fr>  Wed, 03 Apr 2013 16:17:05 +0200

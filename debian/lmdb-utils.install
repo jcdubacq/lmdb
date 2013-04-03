@@ -1,0 +1,2 @@
+libraries/liblmdb/mdb_stat /usr/bin
+libraries/liblmdb/mdb_copy /usr/bin

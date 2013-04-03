@@ -1,0 +1,49 @@
+From: Jean-Christophe Dubacq <jcdubacq1@free.fr>
+Date: Wed, 3 Apr 2013 17:34:42 +0200
+Subject: Add SONAME to library
+
+---
+ libraries/liblmdb/.gitignore |    1 +
+ libraries/liblmdb/Makefile   |    7 ++++---
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/libraries/liblmdb/.gitignore b/libraries/liblmdb/.gitignore
+index 0d493fe..281adc5 100644
+--- a/libraries/liblmdb/.gitignore
++++ b/libraries/liblmdb/.gitignore
+@@ -5,6 +5,7 @@ mdb_copy
+ mdb_stat
+ *.[ao]
+ *.so
++*.so.*
+ *[~#]
+ *.bak
+ *.orig
+diff --git a/libraries/liblmdb/Makefile b/libraries/liblmdb/Makefile
+index 7c3903b..a256b9e 100644
+--- a/libraries/liblmdb/Makefile
++++ b/libraries/liblmdb/Makefile
+@@ -4,10 +4,11 @@ OPT = -O2 -g
+ CFLAGS	= -pthread $(OPT) $(W) $(XCFLAGS)
+ LDLIBS	=
+ SOLIBS	=
++SONAME  = liblmdb.so.0
+ prefix	= /usr/local
+ 
+ IHDRS	= lmdb.h
+-ILIBS	= liblmdb.a liblmdb.so
++ILIBS	= liblmdb.a $(SONAME)
+ IPROGS	= mdb_stat mdb_copy
+ IDOCS	= mdb_stat.1 mdb_copy.1
+ PROGS	= $(IPROGS) mtest mtest2 mtest3 mtest4 mtest5
+@@ -29,8 +30,8 @@ test:	all
+ liblmdb.a:	mdb.o midl.o
+ 	ar rs $@ mdb.o midl.o
+ 
+-liblmdb.so:	mdb.o midl.o
+-	$(CC) $(LDFLAGS) -pthread -shared -o $@ mdb.o midl.o $(SOLIBS)
++$(SONAME):	mdb.o midl.o
++	$(CC) $(LDFLAGS) -pthread -shared -Wl,-soname=$@ -o $@ mdb.o midl.o $(SOLIBS)
+ 
+ mdb_stat: mdb_stat.o liblmdb.a
+ mdb_copy: mdb_copy.o liblmdb.a
