@@ -1,3 +1,9 @@
+lmdb (0.9.6.20130417-1) unstable; urgency=low
+
+  * Merge upstream
+
+ -- Jean-Christophe Dubacq <jcdubacq1@free.fr>  Wed, 17 Apr 2013 12:37:49 +0200
+
 lmdb (0.9.6.20130402-1) unstable; urgency=low
 
   * Initial release.
