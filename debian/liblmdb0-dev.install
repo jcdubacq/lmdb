@@ -1,1 +1,2 @@
 libraries/liblmdb/lmdb.h /usr/include
+libraries/liblmdb/liblmdb.a /usr/lib

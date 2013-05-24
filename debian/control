@@ -26,7 +26,7 @@ Description: Lightning Memory-Mapped Database shared library
 Package: liblmdb0-dev
 Provides: liblmdb-dev
 Conflicts: liblmdb-dev
-Architecture: all
+Architecture: any
 Section: libdevel
 Depends: liblmdb0 (>= ${source:Version}), liblmdb0 (<< ${source:Version}.1~), ${misc:Depends}
 Description: Lightning Memory-Mapped Database development headers
